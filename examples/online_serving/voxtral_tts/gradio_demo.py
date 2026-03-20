@@ -1,3 +1,15 @@
+"""
+- Make sure to install the following for this example to function correctly:
+- `pip install -e .`
+- `pip install gradio==5.50 mistral_common=1.10.0`
+
+Example use case:
+
+python examples/online_serving/voxtral_tts/gradio_demo.py --host slurm-199-077 --port 8000
+
+"""
+
+
 import argparse
 import io
 import json
