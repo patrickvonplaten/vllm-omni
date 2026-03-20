@@ -125,11 +125,12 @@ def _load_from_share(
 
 def main(
     model: str,
+    host: str,
+    port: str,
     output_dir: str | None = None,
-    debug: bool = False,
 ) -> None:
-    base_url = "http://localhost:8091/v1"
-    print(f"Using speech API at: {base_url}/audio/speech")
+    base_url = f"http://{host}:{port}/v1"
+    logger.info(f"Using speech API at: {base_url}/audio/speech")
 
     outputs_dir: Path | None = None
     if output_dir is not None:
@@ -236,7 +237,9 @@ def main(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Voxtral TTS Gradio Demo")
-    parser.add_argument("--model", type=str, required=True, help="Path to the model checkpoint")
+    parser.add_argument("--model", type=str, default="mistralai/Voxtral-4B-TTS-2603", help="Name of model repo on HF")
+    parser.add_argument("--host", type=str, default="localhost", help="Name of host")
+    parser.add_argument("--port", type=str, default="8000", help="port number")
     parser.add_argument(
         "--output-dir",
         type=str,
@@ -244,12 +247,12 @@ if __name__ == "__main__":
         help="Directory to save generated audio and share links. "
         "If not provided, save/share functionality is disabled.",
     )
-    parser.add_argument("--debug", action="store_true", default=False, help="Enable debug mode")
 
     args = parser.parse_args()
 
     main(
         model=args.model,
+        host=args.host,
+        port=args.port,
         output_dir=args.output_dir,
-        debug=args.debug,
     )
