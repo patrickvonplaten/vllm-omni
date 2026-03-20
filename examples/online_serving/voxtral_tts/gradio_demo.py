@@ -250,7 +250,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Voxtral TTS Gradio Demo")
     parser.add_argument("--model", type=str, default="mistralai/Voxtral-4B-TTS-2603", help="Name of model repo on HF")
     parser.add_argument("--host", type=str, default="localhost", help="Name of host")
-    parser.add_argument("--port", type=str, default="8000", help="port number")
+    parser.add_argument("--port", type=str, default="8091", help="port number")
     parser.add_argument(
         "--output-dir",
         type=str,
